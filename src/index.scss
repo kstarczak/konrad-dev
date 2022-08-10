@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* fluid typography from utopia calculator */
+$font-sm: clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem);
+$font-base: clamp(1.09rem, calc(1.05rem + 0.21vw), 1.20rem);
+$font-lg: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem);
+$font-xl: clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem);
+$font-2xl: clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem);
+$font-3xl: clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem);
+$font-4xl: clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem);
+$font-5xl: clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem);
+
+/* variables */
+$font-default: "Outfit";
+$bcg: #171819;
+$muted: #C9CBCF;
+$accent: #66CCC1;
+
+
+/* universal border-box sizing */
 *,
 ::before,
 ::after {
@@ -277,3 +297,98 @@ summary {
 Custom styling content
 ======================
 */
+
+body {
+  * {
+    &::selection {
+      background-color: $accent;
+      color: $bcg;
+    }
+    &::-moz-selection{
+      background-color: $bcg;
+      color: $bcg;
+    }
+    overflow: hidden;
+    font-family: $font-default;
+    font-size: $font-xl;
+  }
+}
+
+.nav {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top:0;
+  width: 100%;
+  z-index: 50;
+  a {
+    text-decoration: none;
+    padding: 0.25rem;
+    margin: 1rem;
+    border-radius: 9999px; 
+    transition-property: box-shadow; 
+    &:focus{
+      outline: none;
+    }
+    &:focus-visible{
+      box-shadow: 0 0 0 4px $accent; 
+    }
+  }
+  .web-logo{
+    width: 4rem;
+    @media screen and (min-width: 640px) {
+      width: 6rem;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 7rem;
+    }
+  }
+}
+.header {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	position: relative;
+	img {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		z-index: -20;
+		object-fit:cover;
+		object-position: center top;
+	}
+	.header-text {
+		font-weight: bold;
+		color: white;
+		padding: 3rem;
+		text-align: center;
+		letter-spacing: 0.025rem;
+		h1{
+			font-size: $font-4xl;
+		}
+		p {
+			font-size: $font-2xl;
+		}
+		a {
+			background-color: $accent;
+			color: $bcg;
+			text-decoration: none;
+			font-weight: 500;
+			padding: 1rem 2rem;
+			border-radius: 9999px;
+			border: 1px solid $bcg;
+		}
+		a:focus {
+			outline: none;
+		}
+		a:focus-visible {
+			box-shadow: 0 0 0 4px $accent; 
+		}
+		a:hover {
+			background-color: rgba(102, 204, 193, 0.8);;
+
+		}
+	}
+
+}
