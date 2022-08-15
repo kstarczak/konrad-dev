@@ -1,3 +1,4 @@
+@use "sass:color";
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* fluid typography from utopia calculator */
@@ -11,10 +12,21 @@ $font-4xl: clamp(2.72rem, calc(2.36rem + 1.83vw), 3.66rem);
 $font-5xl: clamp(3.27rem, calc(2.75rem + 2.56vw), 4.58rem);
 
 /* variables */
-$font-default: "Outfit";
+$font-default: Outfit;
 $bcg: #171819;
 $muted: #C9CBCF;
 $accent: #66CCC1;
+
+
+@mixin drop-sm {
+	filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.90))
+}
+@mixin drop-md {
+	filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.90))
+}
+@mixin drop-lg {
+	filter: drop-shadow(1px 4px 0px rgba(0, 0, 0, 0.90));
+}
 
 @mixin container {
 	margin: 0 auto;
@@ -326,7 +338,6 @@ body {
       background-color: $bcg;
       color: $bcg;
     }
-    overflow: hidden;
     font-family: $font-default;
     font-size: $font-xl;
   }
@@ -367,7 +378,22 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	align-items: center;
 	position: relative;
+	.gradient-top {
+		position: absolute;
+		inset: 0;
+		bottom: 75%;
+		background-image: linear-gradient(#125f8d, transparent);
+		z-index: -1;		
+	}
+	.gradient-bottom {
+		position: absolute;
+		inset: 0;
+		top: 30%;
+		background-image: linear-gradient(transparent, $bcg);
+		z-index: -1;
+	}
 	img {
 		position: absolute;
 		height: 100%;
@@ -384,29 +410,47 @@ body {
 		letter-spacing: 0.025rem;
 		h1{
 			font-size: $font-4xl;
+			@include drop-sm();
+			@media screen and (min-width: 1024px)  {
+				@include drop-lg();
+			}
 		}
 		p {
 			font-size: $font-2xl;
+			@include drop-sm();
+			@media screen and (min-width: 1024px)  {
+				@include drop-lg();
+			}
 		}
-		a {
-			background-color: $accent;
-			color: $bcg;
-			text-decoration: none;
-			font-weight: 500;
-			padding: 1rem 2rem;
-			border-radius: 9999px;
-			border: 1px solid $bcg;
-		}
-		a:focus {
-			outline: none;
-		}
-		a:focus-visible {
-			box-shadow: 0 0 0 4px $accent; 
-		}
-		a:hover {
-			background-color: rgba(102, 204, 193, 0.8);;
+	}
+	a {
+		background-color: rgb(0, 121, 158);
+		color: white;
+		text-decoration: none;
+		font-weight: 500;
+		padding: 1rem 2rem;
+		border-radius: 9999px;
+		border: 2px solid $bcg;
+		display: flex;
+		transition-duration: 200ms;
+	}
+	a:focus {
+		outline: none;
+	}
+	a:focus-visible {
+		box-shadow: 0 0 0 4px $bcg;
+		outline: $accent solid 4px; 
+		outline-offset: 4px;
+		box-sizing: 0 0 0 4px $bcg;
+	}
+	a:hover {
+		background-color: $accent;
+		color: rgb(77, 77, 77);
+		scale: 1.05;
 
-		}
+	}
+	a svg {
+		margin-left: 1rem;
 	}
 
 }
@@ -451,7 +495,7 @@ main {
 	gap: 4rem;
 	// sm: gap-24  lg: gap-40
 	overflow:hidden;
-	section {
+	section.intro {
 		@include container();
 		display: grid;
 		gap: 1rem;
@@ -472,11 +516,202 @@ main {
 
 		}
 		p {
-			
+			color: #777;
+			max-width: 42rem;
+			@include drop-sm();
 		}
 	}
 
+	div>section.slider {
+		@include container();
+		display: grid;
+		gap: 1rem;
+		text-align: center;
+		position: relative;
+		@media screen and (min-width:640px) {
+			text-align: left;
+			
+		}
+		div small {
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: $accent;
+			// drop-shadow-text-small
 
+		}
+		div h2 {
+			letter-spacing: 0.025em;
+			font-weight: 700;
+			//text-3xl
+			//drop-shadow-text-md
+
+		}
+	}
+	div>section.slider .slider-control{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		@media screen and (min-width:640px) {
+			flex-wrap: no-wrap;
+			justify-content: space-between;	
+		}
+		p {
+			color: #777;
+			@include drop-sm();
+			max-width: 42rem;
+		}
+		.buttons{
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 1rem;
+		}
+		.buttons>*{
+			display:grid;
+			place-items: center;
+			padding: 0.5rem;
+			border-radius: 9999px;
+			border: none;
+			background-color: $bcg;
+			opacity: 0.5;
+			&:hover{
+				opacity: 0.8;
+				background-color: $accent;
+			}
+			&:focus {
+				outline:none;
+			}
+			&:focus-visible {
+				box-shadow: 0 0 0 4px $accent;			
+			}
+			&:disabled{
+				opacity: 0.2;
+				background-color: $bcg;
+			}
+		}
+		.buttons>*>svg{
+			pointer-events: none;
+		}
+	}
+	.slides-wrapper {
+		margin-top: -3rem;
+		@include container();
+		@media screen and (max-width: 480px) {
+			width: 100vw;
+			
+		}
+		@media screen and (min-width:640px) {
+			margin-top: -4rem;
+		}
+		@media screen and (min-width: 1024px) {
+			margin-top: -9rem;
+		}
+		div {
+			display: flex;
+			transition: transform 500ms;
+		}
+		div>.slide{
+			position:relative;
+			flex: 1 0 auto;
+			padding-right: 1rem;
+			@media screen and (max-width:480px) {
+				width: auto;
+				flex-basis: 24rem;
+			}
+		}
+		div>.slide>img {
+			object-fit: cover;
+			height: 100%;
+			@media (hover: hover){
+				filter: grayscale(1); 
+				transition-duration: 300ms;
+				&+p {
+					opacity: 0;
+				}
+				&:hover {
+					filter: grayscale(0);
+					&+p {
+						opacity: 1;
+					}
+				}
+			}
+		}
+		div>.slide>p {
+			position: absolute;
+			bottom: 1rem;
+			left: 0.5rem;
+			margin: 0;
+			padding: 0.5rem 1rem;
+			background-color: $bcg;
+			opacity: 0.8;
+			font-weight: 700;
+			font-size: $font-lg;
+			pointer-events: none;
+			letter-spacing: 0.025em;
+			transition-duration: 300ms;
+		}
+
+	}
+	section.contact form{
+		padding: 0.25rem;
+		margin: 0 auto;
+		max-width: 600px;
+		div {
+			position: relative;
+		}
+		div>label{
+			letter-spacing: 0.125rem;
+			position: absolute;
+			padding: 0 0.5rem;
+			border-radius: 9999px;
+			top: 0.5rem;
+			left: 4rem;
+			font-size: $font-lg;
+			transition: all 300ms;
+			background-color: $bcg;
+			color: rgb(199, 199, 199);
+		}
+
+		div>input {
+			border: 4px solid $accent;
+			border-radius: 9999px;
+			padding: 0.5rem;
+			margin: 0 1rem 2rem;
+			background-color: transparent;
+			width: 100%;
+			font-size: $font-base;
+			&:focus{
+				border-color: orange;
+				outline: none;
+				+label {
+				top: -0.5rem;
+				left: 3rem;
+				font-size: $font-base;
+				color: rgb(255, 165, 0, 0.7);
+				}
+			}
+		}
+		textarea{
+			border: 4px solid $accent;
+			border-radius: 1rem;
+			margin: 0 1rem;
+			width: 100%;
+			background-color: transparent;
+			&:focus{
+				border-color: orange;
+				outline: none;
+				+label {
+				top: -0.5rem;
+				left: 3rem;
+				font-size: $font-base;
+				color: rgb(255, 165, 0, 0.7);
+				}
+			}
+
+		}
+	}
 	//TURN BODY OVEFLOW HIDDEN OFF FOR THIS SECTION
 
 }
