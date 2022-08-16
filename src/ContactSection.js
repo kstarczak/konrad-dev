@@ -2,6 +2,9 @@ import { useState } from "react";
 
 const ContactSection = () => {
 
+
+    //add email validation with api on link
+
     const [email, setEmail] = useState('');
 
     const handleChange = (e) => {

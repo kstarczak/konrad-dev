@@ -365,6 +365,7 @@ body {
 	//padding bottom 0 on small screens and 3rem on normal
 	overflow-y: auto;
 	overflow-x: hidden;
+	perspective: 100px;
 
 }
 
@@ -405,6 +406,7 @@ body {
 	justify-content: space-evenly;
 	align-items: center;
 	position: relative;
+	transform-style: preserve-3d;
 	.gradient-top {
 		position: absolute;
 		inset: 0;
@@ -426,6 +428,7 @@ body {
 		z-index: -20;
 		object-fit:cover;
 		object-position: center top;
+		
 	}
 	.header-text {
 		font-weight: bold;
@@ -457,6 +460,7 @@ body {
 		border-radius: 9999px;
 		border: 2px solid $bcg;
 		display: flex;
+		transform: translateZ(-500px);
 		transition-duration: 200ms;
 	}
 	a:focus {
@@ -518,6 +522,17 @@ main {
 	//lg: mt=40
 	// sm: gap-24  lg: gap-4
 	overflow:hidden;
+	/*
+	section{
+		opacity: 0;
+		transform: translateY(-2rem);
+		transition: all 500ms;
+	}
+	section.fade-up{
+		opacity:1;
+		transform: translateY(2rem);
+	}
+	*/
 	section.intro {
 		@include container();
 		display: grid;
