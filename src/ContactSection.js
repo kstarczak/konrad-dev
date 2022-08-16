@@ -26,7 +26,9 @@ const ContactSection = () => {
                     <textarea name="message" id="" cols="30" rows="10"></textarea>
                     <label htmlFor="message">Message</label>
                 </div>
-                <button>Submit</button>
+                <button>
+                    <span>Submit Message</span>
+                </button>
 
             </form>
         </section>

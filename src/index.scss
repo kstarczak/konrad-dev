@@ -46,6 +46,22 @@ $accent: #66CCC1;
 
 }
 
+/// add mixins below to pararlazx css
+
+@mixin perspective {
+	perspective: 100px;
+}
+
+@mixin preserve-3d {
+	transform-style: preserve-3d;
+}
+@mixin distance-1 {
+	transform: translateZ(-100px) scale(2);
+}
+@mixin distance-2 {
+	transform: translateZ(-50px) scale(1.5);
+}
+
 
 /* universal border-box sizing */
 *,
@@ -340,7 +356,16 @@ body {
     }
     font-family: $font-default;
     font-size: $font-xl;
+	overflow: hidden;
   }
+}
+
+.parallax{
+	height: 100vh;
+	//padding bottom 0 on small screens and 3rem on normal
+	overflow-y: auto;
+	overflow-x: hidden;
+
 }
 
 .nav {
@@ -491,9 +516,7 @@ main {
 
 	//sm: mt-24
 	//lg: mt=40
-	display: grid;
-	gap: 4rem;
-	// sm: gap-24  lg: gap-40
+	// sm: gap-24  lg: gap-4
 	overflow:hidden;
 	section.intro {
 		@include container();
@@ -711,6 +734,40 @@ main {
 			}
 
 		}
+				button {
+					background-color: rgb(0, 121, 158);
+					color: white;
+					text-decoration: none;
+					font-weight: 500;
+					padding: 1rem 2rem;
+					border-radius: 9999px;
+					border: 2px solid $bcg;
+					transition-duration: 200ms;
+					width: 100%;
+				}
+		
+				button:focus {
+					outline: none;
+				}
+		
+				button:focus-visible {
+					box-shadow: 0 0 0 4px $bcg;
+					outline: $accent solid 4px;
+					outline-offset: 4px;
+					box-sizing: 0 0 0 4px $bcg;
+				}
+		
+				button:hover {
+					background-color: $accent;
+					color: rgb(77, 77, 77);
+					scale: 1.05;
+		
+				}
+				button>span{
+					color: white;
+					filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.90));
+					letter-spacing: 0.125rem;
+				}
 	}
 	//TURN BODY OVEFLOW HIDDEN OFF FOR THIS SECTION
 
