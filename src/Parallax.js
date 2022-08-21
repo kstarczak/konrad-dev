@@ -1,27 +1,12 @@
-import Nav from "./Nav";
-import Home from "./Home";
-import Header from "./Header";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from './Main';
+import hero from './images/mtn-1920w.jpg';
 
 const Parallax = () => {
     return ( 
-        <BrowserRouter>
-            <div className="parallax">
-                <Nav/>
-                <Header />
-                <Main/>
-                <div className="content">
-                    <Routes>
-                        <Route 
-                            path="/" 
-                            element={<Home/>}>                          
-                        </Route>
-                    </Routes>
-                </div>
-            </div>
-        </BrowserRouter>
-       
+        <div className='parallax'>
+            <img src={hero} alt="mountain at night"/>
+            <div className="gradient-top"></div>
+            <div className="gradient-bottom"></div>
+        </div>
      );
 }
  

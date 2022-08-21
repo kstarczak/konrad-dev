@@ -1,26 +1,30 @@
 import React from 'react';
 
+import Header from "./Header"
 import IntroSection from "./IntroSection";
 import SliderSection from "./SliderSection";
 import ContactSection from "./ContactSection";
-
+import Footer from './Footer';
 
 
 
 class Main extends React.Component {
-    constructor(props) {
-        super(props);
-        this.introRef = React.createRef();
-        this.sliderRef = React.createRef();
-        this.contactRef = React.createRef();
-    }
+    //constructor(props) {
+        //super(props);
+        // add ref={this.introRef} etc to all the components when uncommenting
+        //this.introRef = React.createRef();
+        //this.sliderRef = React.createRef();
+        //this.contactRef = React.createRef();
     render() {
         return (
-            <main>
-                <IntroSection ref={this.introRef} />
-                <SliderSection ref={this.sliderRef} />
-                <ContactSection ref={this.contactRef} />
-            </main>
+            <div className='main'>
+                <Header/>
+                <IntroSection/>
+                <SliderSection/>
+                <ContactSection/>
+                <Footer/>
+                <div className='gradient-bottom'></div>
+            </div>
             
         )
     }

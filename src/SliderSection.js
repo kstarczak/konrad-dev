@@ -62,19 +62,18 @@ const SliderSection = () => {
 
 
     return ( 
-        <div>
+        <div className="slider-section-wrapper">
             <section className="slider" aria-labelledby="slider">
                 <div>
                     <div>
-                        <small>What I've created</small>
-                        <h2 id="slider">Check out some of my projects!</h2>
+                        <h1>What I've created</h1>
+                        <h2 id="slider">Check Out My Projects!</h2>
                     </div>
                     <div className="slider-control">
                         <p>The project below were created using html, css, and javascript. Checkout my github to see the code!
                         </p>
                         <div className="buttons">
                         <button 
-                            data-slideButton="previous" 
                             id="previous" 
                             aria-label="show previous image" 
                             disabled={prevDisabled} 
@@ -83,7 +82,6 @@ const SliderSection = () => {
                             <PrevArrow width="36px" height="36px"/>
                         </button>
                         <button 
-                            data-slideButton="next" 
                             id="next" 
                             aria-label="show next image" 
                             disabled={nextDisabled} 
@@ -96,8 +94,6 @@ const SliderSection = () => {
                 </div>
             </section>
             <Slides/>
-            <div>{slideIndex}</div>
-            <div>{`${prevDisabled}`}</div>
         </div>
      );
 }
