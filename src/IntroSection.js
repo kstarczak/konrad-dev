@@ -22,16 +22,18 @@ const IntroSection = () => {
                     </div>
             <p>
                 {!expandIntro && <span>I've had a passion for creating and building as far as I can remember. 
-                    It started with legos then progressed to orgigami, sketching, and painting. 
-                    Towards the end of high school, my interest in biology became my focus...</span>}
-                {expandIntro && <span>I've had a passion for creating and building as far as I can remember.
-                    It started with legos then progressed to orgigami, sketching, and painting.
-                    Towards the end of high school, my interest in biology became my focus and I pursued a path to help others using what I learned, first as an EMT, then later as a Physician Assistant.
-                    I contined my career in medicine for several years, specializing in both emergency medicine and orthopaedics.
-                    Then during the beginning of pandemic, I finally had time to slow down and reflect.
-                    During this time I decided to switch to a career that would allow my to utilize my creativity and better align with my personal goals.
-                    Using the grit I cultivated working in emergency medicine for several years, I taught myself how to become a web developer.
-                    Now, when I work on projects I feel right at home using my creativity and problem solving skills :)</span>}
+                    It started with legos and progressed to orgigami, sketching, and painting. 
+                    As I progressed through my schooling, I cultivated a strong curiosity for all things related to science...
+                </span>}
+                {expandIntro && <span>I've had a passion for creating and building as far as I can remember. 
+                    It started with legos and progressed to orgigami, sketching, and painting. 
+                    As I progressed through my schooling, I cultivated a strong curiosity for all things related to science and ultimately pursed a master's degree and began a career as a physician assistant.
+                    Working in medicine satisfied my curiosity and allowed me to practice and refine my problem solving skills. 
+                    However, I became aware that I was unable to express myself creatively or utilize innovative thinking that could be more useful in other fields.
+                    After a lot of serious deliberation, I decided to switch to a career that would allow my to combine the problem solving skills I had developed working in the ER with the creative thinking that comes naturally to me.
+                    Just as I did with biology and medicine intially, I've dedicated the past year of my life to learning everything I can about web development. 
+                    Using what I've learned, I have been able to create and build some incredible projects.
+                    Keep scrolling to see what I've been working on!</span>}
                 
                 
             </p>

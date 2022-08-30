@@ -7,7 +7,7 @@ const Header = () => {
                 <h1>Hi, I'm Konrad!</h1>
                 <p>Web Developer</p>
             </div>
-            <a href='#'>
+            <a href='#contact-section'>
                 <span>Contact Me</span>
                 <Envelope width="30px"/>
             </a>
