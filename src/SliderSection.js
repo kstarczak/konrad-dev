@@ -93,7 +93,7 @@ const SliderSection = () => {
                     </div>
                 </div>
             </section>
-            <Slides/>
+            <Slides />
         </div>
      );
 }

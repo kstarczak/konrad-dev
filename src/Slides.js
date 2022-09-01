@@ -1,24 +1,39 @@
-import { useState, useRef } from "react";
+import { useState, useRef} from "react";
+
 
 const Slides = () => {
 
     const [slideIndex, setSlideIndex] = useState(0);
-
     const firstSlideRef = useRef(null);
     const lastSlideRef = useRef(null);
-    const slideContainer = useRef(null)
+    const slideContainer = useRef(null);
 
-    function handleSlideShiftRight() {
+
+    function handleArrowClick(e) {
         const slide = firstSlideRef.current;
         const slideWidth = slide.offsetWidth;
         const container = slideContainer.current;
-        const shift = Math.floor(window.innerWidth/slideWidth);
-        console.log(window.innerWidth);
-        container.style.transform = `translateX(-${shift*slideWidth*((slideIndex/shift)+1)}px)`
-        setSlideIndex (slideIndex + shift);
-        console.log(slideIndex);
-
+        const shift = Math.floor(window.innerWidth / slideWidth);
+        const direction = e.target.dataset.arrow;
+        if (direction === 'next') {
+            if ((slideIndex + shift) < 5) {
+                container.style.transform = `translateX(-${(shift * slideWidth) * ((slideIndex / shift) + 1)}px)`
+                setSlideIndex(slideIndex + shift);
+            };
+        } else {
+            if (slideIndex >= shift) {
+                container.style.transform = `translateX(-${(shift * slideWidth) * ((slideIndex / shift) - 1)}px)`
+                setSlideIndex(slideIndex - shift);
+            } else if (slideIndex > 0) {
+                container.style.transform = 'translateX(0)';
+                setSlideIndex(0);
+            };
+        }
+        
+        console.log(`slide index is: ${slideIndex} and shift is ${shift}`);
     }
+
+
     return ( 
         <div className="slides-wrapper">
                 <div ref={slideContainer}>
@@ -43,7 +58,8 @@ const Slides = () => {
                         <p>Project 5</p>
                     </div>
                 </div>
-                <button onClick={handleSlideShiftRight}>Click Me</button>
+            <button onClick={handleArrowClick} data-arrow="next">Next</button>
+            <button onClick={handleArrowClick} data-arrow="prev">Also click me</button>
         </div>
      );
 }

@@ -4,7 +4,7 @@ import { getDatabase, ref, set, } from "firebase/database";
 import uniqid from 'uniqid';
 
 const firebaseConfig = {
- // add firebase code
+    //firebase code
 };
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseApp);
