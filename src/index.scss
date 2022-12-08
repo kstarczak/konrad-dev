@@ -187,6 +187,8 @@ body {
 	}
 }
 
+
+
 .header {
 	min-height: 100vh;
 	display: flex;
@@ -198,6 +200,13 @@ body {
 		color: white;
 		text-align: center;
 		letter-spacing: 0.025rem;
+		h1{
+			animation: 1300ms ease-out 0s backwards slideUp;
+
+		}
+		p {
+			animation: 1500ms ease-out 1300ms backwards fadeIn;
+		}
 		@media screen and (max-width: 480px) {
 			h1{
 				font-size: $font-2xl;
@@ -252,6 +261,7 @@ body {
 		border: 2px solid $bcg;
 		display: flex;
 		align-items: center;
+		animation: 700ms ease-out 2000ms backwards slideBounce;
 		transition-duration: 100ms;
 	}
 	a:focus {
@@ -273,6 +283,40 @@ body {
 	}
 	a svg {
 		margin-left: 1rem;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(60vh);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+}
+@keyframes slideBounce {
+	0% {
+		transform: translateY(30vh);
+		opacity: 0;
+	}
+	70%{
+		transform: translateY(-2vh);
+		opacity:0.9
+	}
+
+	to {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }
 .main {
@@ -384,8 +428,11 @@ body {
 		align-items: center;
 		transition-duration: 100ms;
 		@media screen and (max-width: 480px) {
+			transform: scale(2);
 			border-radius: 50%;
+
 		}
+
 	}
 	button:focus {
 		outline: none;
@@ -466,6 +513,24 @@ section.slider .slider-control{
 			align-items: center;
 			gap: 1rem;
 			padding: 1rem;
+			button[data-arrow="prev"] {
+					@media screen and (max-width: 480px) {
+						position: absolute;
+						left: 9px;
+						top: 540px;
+						z-index: 100;
+					}
+			
+				}
+			
+			button[data-arrow="next"] {
+					@media screen and (max-width: 480px) {
+						position: absolute;
+						right: 9px;
+						top: 540px;
+						z-index: 100;
+					}
+				}
 		}
 		.buttons>*{
 			display:grid;
@@ -525,10 +590,25 @@ section.slider .slider-control{
 				flex-basis: 24rem;
 			}
 		}
+		div>.slide>p {
+			position: absolute;
+			bottom: 1rem;
+			left: 0.5rem;
+			margin: 0;
+			padding: 0.5rem 1rem;
+			background-color: $bcg;
+			font-weight: 700;
+			font-size: $font-lg;
+			pointer-events: none;
+			letter-spacing: 0.025em;
+			transition-duration: 300ms;
+		}
 		div>.slide>img {
 			object-fit: cover;
-			height: 100%;
-			@media (hover: hover){
+			object-position: center;
+			width: 344px;
+			height: 410px;
+			@media screen and (min-width: 481px) {
 				filter: grayscale(1); 
 				transition-duration: 300ms;
 				&+p {
@@ -542,19 +622,31 @@ section.slider .slider-control{
 				}
 			}
 		}
-		div>.slide>p {
-			position: absolute;
-			bottom: 1rem;
-			left: 0.5rem;
-			margin: 0;
-			padding: 0.5rem 1rem;
-			background-color: $bcg;
-			opacity: 0.8;
-			font-weight: 700;
+		div>.slide>div{
+			display: block;
+			width: 344px;
+			height: 410px;
 			font-size: $font-lg;
-			pointer-events: none;
-			letter-spacing: 0.025em;
-			transition-duration: 300ms;
+			font-weight: 700;
+			text-align: center;
+			padding-top:180px;
+			background-color: gray;
+			@media screen and (min-width: 481px) {
+					filter: grayscale(1);
+					transition-duration: 300ms;
+			
+					&+p {
+						opacity: 0;
+					}
+			
+					&:hover {
+						filter: grayscale(0);
+			
+						&+p {
+							opacity: 1;
+						}
+					}
+				}
 		}
 
 	}
@@ -634,9 +726,14 @@ section.contact form{
 		position: absolute;
 		padding: 0 0.5rem;
 		border-radius: 9999px;
+		top: -0.5rem;
+		left: 3rem;
+		font-size: $font-base;
+		/* uncomment to translate label on focus
 		top: 0.5rem;
 		left: 4rem;
 		font-size: $font-lg;
+		*/
 		transition: all 300ms;
 		background-color: $bcg;
 		color: rgb(199, 199, 199);
@@ -645,26 +742,34 @@ section.contact form{
 	div>input {
 		border: 2px solid $blue;
 		border-radius: 9999px;
-		padding: 0.5rem;
+		padding: 1rem;
 		margin-bottom: 1rem;
 		background-color: transparent;
 		width: 100%;
 		font-size: $font-base;
+
+		
 		&:focus{
 			border-color: $accent;
 			outline: none;
 			+label {
+			/* uncomment to translate label on focus
 			top: -0.5rem;
 			left: 3rem;
 			font-size: $font-base;
+			*/
 			color: $accent;
 			}
 		}
+	}
+	.message{
+		margin-top: 1rem;
 	}
 	textarea{
 		border: 2px solid $blue;
 		border-radius: 1rem;
 		width: 100%;
+		padding: 1rem;
 		background-color: transparent;
 		&:focus{
 			border-color: $accent;
@@ -763,8 +868,6 @@ p {
 	
 }
 }	
-
-
 
 footer {
 	width: 100%;

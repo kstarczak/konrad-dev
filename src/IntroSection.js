@@ -21,19 +21,17 @@ const IntroSection = () => {
                         <h2 id="journey">My Journey</h2>
                     </div>
             <p>
-                {!expandIntro && <span>I've had a passion for creating and building as far as I can remember. 
-                    It started with legos and progressed to orgigami, sketching, and painting. 
-                    As I progressed through my schooling, I cultivated a strong curiosity for all things related to science...
+                {!expandIntro && <span>I am a freelance web developer and creator of Live Free and Code LLC. Over the past 2 years, I've dedicated my time and energy to learning
+                    web development and creating eye-catching and user-friendly web based applications. Previously, I had a successful professional career in the medical field, where I worked as a Physician Assistant
+                    specializing in emergency medicine for over 5 years...
                 </span>}
-                {expandIntro && <span>I've had a passion for creating and building as far as I can remember. 
-                    It started with legos and progressed to orgigami, sketching, and painting. 
-                    As I progressed through my schooling, I cultivated a strong curiosity for all things related to science and ultimately pursed a master's degree and began a career as a physician assistant.
-                    Working in medicine satisfied my curiosity and allowed me to practice and refine my problem solving skills. 
-                    However, I became aware that I was unable to express myself creatively or utilize innovative thinking that could be more useful in other fields.
-                    After a lot of serious deliberation, I decided to switch to a career that would allow my to combine the problem solving skills I had developed working in the ER with the creative thinking that comes naturally to me.
-                    Just as I did with biology and medicine intially, I've dedicated the past year of my life to learning everything I can about web development. 
-                    Using what I've learned, I have been able to create and build some incredible projects.
-                    Keep scrolling to see what I've been working on!</span>}
+                {expandIntro && <span>I am a freelance web developer and creator of Live Free and Code LLC. Over the past 2 years, I've dedicated my time and energy to learning
+                    web development and creating eye-catching and user-friendly web based applications. Previously, I had a successful professional career in the medical field, where I worked as a Physician Assistant
+                    specializing in emergency medicine for over 5 years. During my time as a PA, I greatly enjoyed applying algorithm-based thinking to guide diagnostics and medical decision making.
+                    I also enjoyed converting complex, technical information to simple and basic comcepts for patients and family members to comprehend. By making the jump from physician assistant to web developer, I
+                    transitioned from daignosing and treatment ailments in people to isolating and debugging problems in software. I've throughly enjoyed the process of learning all the intricacies of web development.
+                    My computer science knowledge is showcased through my projects which use multiple languages for front
+                    end and back end applications. Keep scrolling to check out my work!</span>}
                 
                 
             </p>

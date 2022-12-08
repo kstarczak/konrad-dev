@@ -3,11 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, } from "firebase/database";
 import uniqid from 'uniqid';
 
-const firebaseConfig = {
-    //firebase code
-};
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getDatabase(firebaseApp);
+//firebaseAPIcode removed from github
+
 
 const ContactSection = () => {
 
@@ -86,7 +83,7 @@ const ContactSection = () => {
                         <h2 id="contact">Contact me</h2>
                 </div>
                 <p>
-                    Send me as message if you would like to collaborate on any projects or if you are looking to hire a web developer. Or <a href="mailto:k.starczak@gmail.com?subject=Let%27s%20work%20together%21">use your default email client</a> if you prefer.
+                    I am currently available for freelance work and open to full-time developer positions. Send me a message below or <a href="mailto:k.starczak@gmail.com?subject=Let%27s%20work%20together%21">use your default email client</a> if you prefer.
                 </p>
             </div> }
 
@@ -99,7 +96,7 @@ const ContactSection = () => {
                         value={email} 
                         onChange={handleEmailChange}
                     />
-                    <label htmlFor="emailAddress">Email Address</label>
+                    <label htmlFor="emailAddress" className={(email.length>0 && "filled").toString()}>Email Address</label>
                     {emailValid === 'invalid' && <span id="invalid-email" aria-live="polite">Please enter a valid email address</span>}
                 </div>
                 <div className="message">
@@ -114,7 +111,7 @@ const ContactSection = () => {
                     >
                     </textarea>
                     {messageValid === 'invalid' && <span id="invalid-message" aria-live="polite">Message must be at least 10 characters long.</span>}
-                    <label htmlFor="message">Message</label>
+                    <label htmlFor="message" className={(email.length > 0 && "filled").toString()}>Message</label>
                 </div>
                 <button type="submit">
                     <span>Submit Message</span>
@@ -122,7 +119,7 @@ const ContactSection = () => {
             </form>}
             {messageSent && <div className="submit-success">
                 <h2>Message sent successfully!</h2>
-                <p>Thank you for your interest! I will reply as soon as possible.</p>
+                <p>Thank you for your interest! I will get back to you as soon as possible.</p>
             </div>}
             {error && <div className="submit-failed">
                 <h2>Message failed to send:</h2>
